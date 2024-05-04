@@ -1,0 +1,171 @@
+@import url('reset.css');
+
+/* =============== Global Variables =============== */
+:root {
+
+  /* Colors */
+  --clr-red: hsl(0, 78%, 62%);
+  --clr-cyan: hsl(180, 62%, 55%);
+  --clr-orange: hsl(34, 97%, 64%);
+  --clr-blue: hsl(212, 86%, 64%);
+  --clr-very-dark-blue: hsl(234, 12%, 34%);
+  --clr-grayish-blue: hsl(229, 6%, 66%);
+  --clr-very-light-gray: hsl(0, 0%, 98%);
+
+  /* Typography */
+  --ff-primary: 'Poppins', sans-serif;
+  --fw-light: 200;
+  --fw-normal: 400;
+  --fw-bold: 600;
+  --fs-small: clamp(0.65rem, 0.4378rem + 0.5854vw, 0.8rem);
+  --fs-normal: clamp(0.75rem, 0.4840rem + 0.7337vw, 0.938rem);
+  --fs-medium: clamp(1rem, 0.6463rem + 0.9756vw, 1.25rem);
+  --fs-large: clamp(1.3rem, -0.0439rem + 3.7073vw, 2.25rem);
+
+  /* Spacing */
+  --spc-normal: clamp(1rem, -0.4146rem + 3.9024vw, 2rem);
+  --spc-large: clamp(4rem, 2.5854rem + 3.9024vw, 5rem);
+}
+
+/* =============== Global Styles =============== */
+html {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-normal);
+  line-height: 1.7;
+  color: var(--clr-grayish-blue);
+}
+
+body {
+  background: var(--clr-very-light-gray);
+  font-size: var(--fs-normal);
+  padding-block: var(--spc-large);
+}
+
+h1,
+h2 {
+  line-height: 1.3;
+  color: var(--clr-very-dark-blue);
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: var(--fs-large);
+}
+
+h2 {
+  font-size: var(--fs-medium);
+}
+
+/* =============== Reusable Classes =============== */
+.wrapper {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--spc-normal);
+}
+
+.wrapper--narrow {
+  max-width: 550px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* =============== Header Section =============== */
+.header {
+  padding-bottom: var(--spc-large);
+}
+
+.header__title {
+  font-weight: var(--fw-light);
+}
+
+.header__title>span {
+  display: block;
+  font-weight: var(--fw-bold);
+}
+
+/* =============== Cards Section =============== */
+.cards {
+  display: grid;
+  grid-auto-columns: 1fr;
+  gap: var(--spc-normal);
+}
+
+.card {
+  --px-border: 5px;
+
+  background: white;
+  border-top: var(--px-border) solid;
+  border-radius: var(--px-border);
+  padding: var(--spc-normal);
+  box-shadow: 0px 15px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.card--cyan {
+  border-color: var(--clr-cyan);
+}
+
+.card--red {
+  border-color: var(--clr-red);
+}
+
+.card--orange {
+  border-color: var(--clr-orange);
+}
+
+.card--blue {
+  border-color: var(--clr-blue);
+}
+
+.card__text {
+  font-size: var(--fs-small);
+}
+
+.card__icon {
+  width: 45px;
+  margin-top: 2em;
+  margin-left: auto;
+}
+
+/* =============== Media Queries =============== */
+@media screen and (min-width: 580px) {
+  .cards {
+    grid-template-areas:
+      "one ."
+      "one two"
+      "three two"
+      "three four"
+      ". four";
+  }
+
+  .cards> :nth-child(1) {
+    grid-area: one;
+  }
+
+  .cards> :nth-child(2) {
+    grid-area: two;
+  }
+
+  .cards> :nth-child(3) {
+    grid-area: three;
+  }
+
+  .cards> :nth-child(4) {
+    grid-area: four;
+  }
+
+  .card__icon {
+    width: unset;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .cards {
+    grid-template-areas:
+      ". two ."
+      "one two four"
+      "one three four"
+      ". three .";
+  }
+}
